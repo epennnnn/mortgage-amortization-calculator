@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi KPR Pro</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Simulasi Cicilan KPR</h2>
+
+        <div class="input-group">
+            <label>Harga Properti (Rp)</label>
+            <input type="text" id="loanAmount" inputmode="numeric" onkeyup="formatInput(this)" placeholder="Contoh: 500.000.000">
+        </div>
+        
+        <div class="input-group">
+            <label>Uang Muka / Down Payment (Rp)</label>
+            <input type="text" id="downPayment" inputmode="numeric" onkeyup="formatInput(this)" placeholder="Masukkan jumlah DP">
+        </div>
+        
+        <div class="input-group">
+            <label>Bunga Per Tahun (%)</label>
+            <input type="number" id="interestRate" placeholder="Contoh: 5">
+        </div>
+
+        <div class="input-group">
+            <label>Tenor (Tahun)</label>
+            <input type="number" id="loanTerm" placeholder="Contoh: 10">
+        </div>
+
+        <button id="calculateBtn">Hitung Simulasi</button>
+
+        <div class="result-box">
+            <span>Estimasi Cicilan Bulanan:</span>
+            <span id="monthlyPayment">Rp 0</span>
+        </div>
+
+        <div id="summary-details" style="display: none;">
+            <p>Pokok Pinjaman: <span id="summaryPrincipal">Rp 0</span></p>
+            <p>Total Bunga: <span id="summaryInterest">Rp 0</span></p>
+        </div>
+
+        <div style="max-width: 300px; margin: 20px auto;">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <button id="downloadPdf" style="margin-bottom: 20px; display: none;">Download PDF Report</button>
+
+        <div class="table-wrapper">
+            <table id="amortizationTable">
+                <thead>
+                    <tr>
+                        <th>Bulan</th>
+                        <th>Bunga</th>
+                        <th>Pokok</th>
+                        <th>Sisa Pinjaman</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Simulasi KPR. Crafted for Finance & IT Excellence.
+    </footer>
+
+    <div id="loadingOverlay">
+        <div class="spinner"></div>
+        <p style="font-weight: 600; color: #1a365d; margin-top: 15px;">Menyiapkan Laporan PDF...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
